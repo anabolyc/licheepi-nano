@@ -1,0 +1,66 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "update submodules",
+            "type": "shell",
+            "command": "git submodule update --init",
+            "problemMatcher": []
+        },
+
+        {
+            "label": "defconfig SPI image",
+            "type": "shell",
+            "command": "make licheepi_nano_defconfig",
+            "options": {
+                "cwd": "${workspaceFolder}/buildroot",
+                "env": {
+                    "BR2_EXTERNAL": "${workspaceFolder}"
+                }
+            },
+            "problemMatcher": []
+        },
+
+        {
+            "label": "build SPI image",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/buildroot",
+                "env": {
+                    "BR2_EXTERNAL": "${workspaceFolder}"
+                }
+            },
+            "problemMatcher": []
+        },
+
+
+        {
+            "label": "defconfig MMC image",
+            "type": "shell",
+            "command": "make licheepi_nano_mmc_defconfig",
+            "options": {
+                "cwd": "${workspaceFolder}/buildroot",
+                "env": {
+                    "BR2_EXTERNAL": "${workspaceFolder}"
+                }
+            },
+            "problemMatcher": []
+        },
+
+        {
+            "label": "build MMC image",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/buildroot",
+                "env": {
+                    "BR2_EXTERNAL": "${workspaceFolder}"
+                }
+            },
+            "problemMatcher": []
+        }
+    ]
+}
